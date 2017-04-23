@@ -1,0 +1,42 @@
+<project name="CST316MetricsLab" default="dist" basedir=".">
+	<property name="src" value="." />
+	<property name="build" value="build" />
+	<property name="jar" value="GUILab.jar" />
+
+	<target name="prepare">
+		<tstamp/>
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src}" destdir="${build}" />
+	</target>
+
+	<target name="dist" depends="compile">
+		<jar jarfile="${jar}" basedir="${build}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete file="${jar}" />
+	</target>
+
+
+	<!-- create the given .java files -->
+	<target name="given">
+		<delete file="../given-gui.zip" />
+		<mkdir dir="t" />
+		<copy todir="t">
+			<fileset dir="." includes="**/*.java, **/*.given build.xml, manifest, *.properties"
+							 excludes="**/AccountServerFactory.java, **/ServerSolution.java, **/MainFrame.java" />
+<!--
+							 excludes="**/MainFrame.java" />
+-->
+		</copy>
+		<jar jarfile="../given-gui.zip"  basedir="t" />
+		<delete dir="t" />
+	</target>
+</project>
+	
+
+
