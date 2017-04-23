@@ -2,7 +2,7 @@ package banking.server;
 
 import java.util.*;
 
-import banking.primitive.core.Account;
+import banking.interfaces.Account;
 import banking.primitive.core.Savings;
 
 class ServerTest {

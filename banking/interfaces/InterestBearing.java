@@ -1,4 +1,4 @@
-package banking.primitive;
+package banking.interfaces;
 
 public interface InterestBearing
 {

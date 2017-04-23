@@ -1,7 +1,8 @@
 package banking.server;
 
 import java.util.List;
-import banking.primitive.core.Account;
+
+import banking.interfaces.Account;
 
 public interface AccountServer {
 

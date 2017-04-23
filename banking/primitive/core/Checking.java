@@ -1,7 +1,11 @@
 package banking.primitive.core;
 
+import banking.interfaces.Account;
+
 @SuppressWarnings("serial")
 public class Checking extends Account {
+	static final long serialVersionUID  = -7588980448693010399L;
+
 	private int numWithdraws = 0;
 
 	private Checking(String name) {

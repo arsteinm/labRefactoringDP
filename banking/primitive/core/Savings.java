@@ -1,9 +1,12 @@
 package banking.primitive.core;
 
-import banking.primitive.*;
+import banking.interfaces.Account;
+import banking.interfaces.InterestBearing;
 
 @SuppressWarnings("serial")
 public class Savings extends Account implements InterestBearing {
+	static final long serialVersionUID  = -7588980448693010399L;
+	
 	private int numWithdraws = 0;
 
 	public Savings(String name) {

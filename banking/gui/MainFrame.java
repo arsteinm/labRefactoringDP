@@ -1,8 +1,8 @@
 package banking.gui;
 
+import banking.interfaces.Account;
 import banking.server.AccountServer;
 import banking.server.AccountServerFactory;
-import banking.primitive.core.Account;
 
 import java.io.*;
 import java.util.*;

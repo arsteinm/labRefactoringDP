@@ -1,11 +1,15 @@
-package banking.primitive.core;
+package banking.interfaces;
 
 import banking.primitive.*;
+import banking.primitive.core.DepositParameter;
+
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public abstract class Account implements Asset
 {
+	static final long serialVersionUID  = -7588980448693010399L;
+
 	protected float balance =0.0F;
 	protected String name;
 

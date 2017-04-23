@@ -3,9 +3,12 @@ package banking.server;
 import java.util.*;
 import java.io.*;
 
+import banking.interfaces.Account;
 import banking.primitive.core.*;
 
 class ServerSolution implements AccountServer {
+
+	static final long serialVersionUID  = -7588980448693010399L;
 
 	static String fileName = "accounts.ser";
 
