@@ -54,7 +54,8 @@ class ServerSolution implements IAccountServer {
 	}
 
 	//ACTIVITY 2-1 SMELL WITHIN A CLASS - Uncommunicative Name
-	//Name of method before was simply update
+	//Name of method before was simply update and unclear on what was updated
+	//now it is clear that this updates account
 	public void updateAccount(AAccount account) {
 		int index = findIndex(account.getName());
 		if (index < 0) {
