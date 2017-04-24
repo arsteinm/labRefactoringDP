@@ -14,7 +14,7 @@ public interface IAccountServer {
 	/** Replace the already existing account.  Throws IllegalStateException
 		if Account does not exist (this is a stretch, BTW).
 	*/
-	public void		update(AAccount account);
+	public void		updateAccount(AAccount account);
 
 	/** Returns Account object or null if not found. */
 	public AAccount	getAccount(String name);

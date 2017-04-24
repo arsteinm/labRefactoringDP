@@ -53,7 +53,9 @@ class ServerSolution implements IAccountServer {
 		accountList.add(acc);
 	}
 
-	public void update(AAccount account) {
+	//ACTIVITY 2-1 SMELL WITHIN A CLASS - Uncommunicative Name
+	//Name of method before was simply update
+	public void updateAccount(AAccount account) {
 		int index = findIndex(account.getName());
 		if (index < 0) {
 			throw new IllegalStateException("Account not found:" + account);

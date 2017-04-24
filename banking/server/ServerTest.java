@@ -26,7 +26,7 @@ class ServerTest {
 		AAccount acc = server.getAccount("Bob");
 		System.out.println("Bob:" + acc);
 		acc.withdraw(200);
-		server.update(acc);
+		server.updateAccount(acc);
 		System.out.println("All accounts: " + server.getAllAccounts());
 		System.out.println("Overdrawn accounts: " + server.getOverdrawnAccounts());
 		
@@ -42,7 +42,7 @@ class ServerTest {
 		}
 
 		try {
-			server.update (new Savings("Joe"));
+			server.updateAccount (new Savings("Joe"));
 			System.out.println("***Update nonexistant failed");
 		} catch (IllegalStateException e) {
 			System.out.println("Passed update nonexistant:" + e.getMessage());
