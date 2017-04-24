@@ -1,32 +1,32 @@
 package banking.interfaces;
 
 import banking.primitive.*;
-import banking.primitive.core.DepositParameter;
 
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
-public abstract class Account implements Asset
+public abstract class AAccount implements IAsset
 {
 	static final long serialVersionUID  = -7588980448693010399L;
 
-	protected float balance =0.0F;
+	//SER316 ACTIVITY 1.4
+	protected float accountBalance =0.0F;
 	protected String name;
 
-	public Account(String n)
+	public AAccount(String n)
 	{
 		name = n;
 	}
 
-	public Account(String n, float b)
+	public AAccount(String n, float b)
 	{
 		name = n;
-		balance = b;
+		accountBalance = b;
 	}
 
 	public void display()
 	{
-	    JOptionPane.showMessageDialog(null, "Account " + name + " has $" + balance);
+	    JOptionPane.showMessageDialog(null, "Account " + name + " has $" + accountBalance);
 	}
 
 	public String getName()
@@ -36,13 +36,16 @@ public abstract class Account implements Asset
 
 	public float getBalance()
 	{
-		return balance;
+		return accountBalance;
 	}
 	
-	public abstract void deposit(DepositParameter parameterObject);
+	//ACTIVITY 2-2 SMELL BETWEEN CLASSES - Data Class
+	//Deleted DepositAmount Class as this held nothing but a float value for an amount
+	//constructor now just references amount directly 
+	public abstract void deposit(float amount);
 	public abstract void withdraw(float amount);
 
     public String toString() {
-    	return "Account " + name + " has $" + balance +"\n";
+    	return "Account " + name + " has $" + accountBalance +"\n";
     }
 }

@@ -1,10 +1,10 @@
 package banking.primitive.core;
 
-import banking.interfaces.Account;
-import banking.interfaces.InterestBearing;
+import banking.interfaces.AAccount;
+import banking.interfaces.IInterestBearing;
 
 @SuppressWarnings("serial")
-public class Savings extends Account implements InterestBearing {
+public class Savings extends AAccount implements IInterestBearing {
 	static final long serialVersionUID  = -7588980448693010399L;
 	
 	private int numWithdraws = 0;
@@ -20,20 +20,22 @@ public class Savings extends Account implements InterestBearing {
 	public void display() {
 		super.display();
 	}
-
-	public void deposit(DepositParameter parameterObject) {
-		balance = balance + parameterObject.amount - 0.50F;
+	//ACTIVITY 2-2 SMELL BETWEEN CLASSES - Data Class
+	//Deleted DepositAmount Class as this held nothing but a float value
+	//constructor now just references amount directly 
+	public void deposit(float amount) {
+		accountBalance = accountBalance + amount - 0.50F;
 	}
 
 	public void withdraw(float amount) {
-		balance = balance - amount;
+		accountBalance = accountBalance - amount;
 		numWithdraws++;
 		if (numWithdraws > 3)
-			balance = balance - 1;
+			accountBalance = accountBalance - 1;
 	}
 
 	public void accrueInterest() {
-		balance = balance * 1.001F;
+		accountBalance = accountBalance * 1.001F;
 	}
 
 	public String toString() {

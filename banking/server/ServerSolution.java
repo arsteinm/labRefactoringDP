@@ -3,16 +3,14 @@ package banking.server;
 import java.util.*;
 import java.io.*;
 
-import banking.interfaces.Account;
+import banking.interfaces.AAccount;
 import banking.primitive.core.*;
 
-class ServerSolution implements AccountServer {
-
-	static final long serialVersionUID  = -7588980448693010399L;
+class ServerSolution implements IAccountServer {
 
 	static String fileName = "accounts.ser";
 
-	List<Account> accountList = new ArrayList<Account>();
+	List<AAccount> accountList = new ArrayList<AAccount>();
 
 	public ServerSolution() {
 		File file = new File(fileName);
@@ -25,7 +23,7 @@ class ServerSolution implements AccountServer {
 				Integer sizeI = (Integer) in.readObject();
 				int size = sizeI.intValue();
 				for (int i=0; i < size; i++) {
-					Account acc = (Account) in.readObject();
+					AAccount acc = (AAccount) in.readObject();
 					accountList.add(acc);
 				}
 			}
@@ -42,7 +40,7 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	public void newAccount(String type, String name, float balance) {
-		Account acc;
+		AAccount acc;
 		if ("Checking".equals(type)) {
 			acc = new Checking(name, balance);
 
@@ -55,7 +53,7 @@ class ServerSolution implements AccountServer {
 		accountList.add(acc);
 	}
 
-	public void update(Account account) {
+	public void update(AAccount account) {
 		int index = findIndex(account.getName());
 		if (index < 0) {
 			throw new IllegalStateException("Account not found:" + account);
@@ -65,7 +63,7 @@ class ServerSolution implements AccountServer {
 		accountList.add(account);
 	}
 
-	public Account getAccount(String name) {
+	public AAccount getAccount(String name) {
 		int index = findIndex(name);
 		if (index < 0)
 			return null;
@@ -73,15 +71,15 @@ class ServerSolution implements AccountServer {
 		return accountList.get(index);
 	}
 
-	public List<Account> getAllAccounts() {
+	public List<AAccount> getAllAccounts() {
 		return accountList;
 	}
 
-	public List<Account> getOverdrawnAccounts() {
-		List<Account> result = new ArrayList<Account>();
+	public List<AAccount> getOverdrawnAccounts() {
+		List<AAccount> result = new ArrayList<AAccount>();
 
 		for (int i=0; i < accountList.size(); i++) {
-			Account acc = accountList.get(i);
+			AAccount acc = accountList.get(i);
 			if (acc.getBalance() < 0) {
 				result.add(acc);
 			}
@@ -116,7 +114,7 @@ class ServerSolution implements AccountServer {
 	protected int findIndex(String name) {
 
 		for (int i=0; i < accountList.size(); i++) {
-			Account acc = accountList.get(i);
+			AAccount acc = accountList.get(i);
 			if (name.equals(acc.getName())) {
 				return i;
 			}

@@ -6,7 +6,7 @@ public class AccountServerFactory {
 	public AccountServerFactory() {
 	}
 
-	public AccountServer getAccountServer() {
+	public IAccountServer getAccountServer() {
 		return new ServerSolution();
 	}
 }

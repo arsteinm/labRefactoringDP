@@ -2,9 +2,9 @@ package banking.server;
 
 import java.util.List;
 
-import banking.interfaces.Account;
+import banking.interfaces.AAccount;
 
-public interface AccountServer {
+public interface IAccountServer {
 
 	/** Create a new account object in the server.  Type is either
 		"Checking" or "Savings".  Throws IllegalArgumentException otherwise.
@@ -14,16 +14,16 @@ public interface AccountServer {
 	/** Replace the already existing account.  Throws IllegalStateException
 		if Account does not exist (this is a stretch, BTW).
 	*/
-	public void		update(Account account);
+	public void		update(AAccount account);
 
 	/** Returns Account object or null if not found. */
-	public Account	getAccount(String name);
+	public AAccount	getAccount(String name);
 
 	/** Returns a list of all Accounts inside the server */
-	public List<Account>		getAllAccounts();
+	public List<AAccount>		getAllAccounts();
 
 	/** Returns a list of Accounts whose balance is less than 0 */
-	public List<Account>		getOverdrawnAccounts();
+	public List<AAccount>		getOverdrawnAccounts();
 
 	/** Saves the state of the server and terminates the program */
 	public void		shutdown();

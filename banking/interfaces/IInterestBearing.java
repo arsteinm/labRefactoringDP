@@ -1,6 +1,6 @@
 package banking.interfaces;
 
-public interface InterestBearing
+public interface IInterestBearing
 {
 	public void accrueInterest();
 }

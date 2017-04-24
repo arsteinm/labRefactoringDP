@@ -2,15 +2,15 @@ package banking.server;
 
 import java.util.*;
 
-import banking.interfaces.Account;
+import banking.interfaces.AAccount;
 import banking.primitive.core.Savings;
 
 class ServerTest {
 	public static void main(String args[]) {
 
-		AccountServer server = new AccountServerFactory().getAccountServer();
+		IAccountServer server = new AccountServerFactory().getAccountServer();
 		
-		List<Account> initialTest = server.getAllAccounts();
+		List<AAccount> initialTest = server.getAllAccounts();
 		if (initialTest.size() > 0) {
 			System.out.println("Server not empty");
 			System.out.println(initialTest);
@@ -23,7 +23,7 @@ class ServerTest {
 
 		System.out.println("All accounts: " + server.getAllAccounts());
 
-		Account acc = server.getAccount("Bob");
+		AAccount acc = server.getAccount("Bob");
 		System.out.println("Bob:" + acc);
 		acc.withdraw(200);
 		server.update(acc);

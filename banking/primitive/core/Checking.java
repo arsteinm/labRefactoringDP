@@ -1,9 +1,9 @@
 package banking.primitive.core;
 
-import banking.interfaces.Account;
+import banking.interfaces.AAccount;
 
 @SuppressWarnings("serial")
-public class Checking extends Account {
+public class Checking extends AAccount {
 	static final long serialVersionUID  = -7588980448693010399L;
 
 	private int numWithdraws = 0;
@@ -25,15 +25,18 @@ public class Checking extends Account {
 		super.display();
 	}
 
-	public void deposit(DepositParameter parameterObject) {
-		balance = balance + parameterObject.amount;
+	//ACTIVITY 2-2 SMELL BETWEEN CLASSES - Data Class
+	//Deleted DepositAmount Class as this held nothing but a float value
+	//constructor now just references amount directly 
+	public void deposit(float amount) {
+		accountBalance = accountBalance + amount;
 	}
 
 	public void withdraw(float amount) {
-		balance = balance - amount;
+		accountBalance = accountBalance - amount;
 		numWithdraws++;
 		if (numWithdraws > 10)
-			balance = balance - 2;
+			accountBalance = accountBalance - 2;
 	}
 
 	public String toString() {
