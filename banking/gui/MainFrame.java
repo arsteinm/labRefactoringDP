@@ -2,6 +2,7 @@ package banking.gui;
 
 import banking.interfaces.AAccount;
 import banking.server.IAccountServer;
+import banking.server.AccountObserver;
 import banking.server.AccountServerFactory;
 
 import java.io.*;
@@ -30,6 +31,8 @@ class MainFrame extends JFrame {
 		//** initialize myServer
 		AccountServerFactory factory = AccountServerFactory.getInstance();
 		myServer = factory.getAccountServer();
+		AccountObserver accountObserver = new AccountObserver(myServer.getAllAccounts());
+		
 
 		props = new Properties();
 

@@ -5,9 +5,8 @@ import java.io.*;
 
 import banking.interfaces.AAccount;
 import banking.primitive.core.*;
-import javafx.collections.ObservableList;
 
-class ServerSolution implements IAccountServer {
+class ServerSolution extends Observable implements IAccountServer  {
 
 	static String fileName = "accounts.ser";
 
@@ -52,6 +51,8 @@ class ServerSolution implements IAccountServer {
 			throw new IllegalArgumentException("Bad account type:" + type);
 		}
 		accountList.add(acc);
+		setChanged();
+		notifyObservers(acc);
 	}
 
 	//ACTIVITY 2-1 SMELL WITHIN A CLASS - Uncommunicative Name
@@ -126,10 +127,4 @@ class ServerSolution implements IAccountServer {
 		return -1;
 	}
 	
-	public class ObservableAccountList extends Observable {
-		List<AAccount> observedList;
-		public ObservableAccountList(List<AAccount> list){
-			observedList = list;
-		}
-	}
 }
