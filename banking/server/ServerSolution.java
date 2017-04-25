@@ -5,6 +5,7 @@ import java.io.*;
 
 import banking.interfaces.AAccount;
 import banking.primitive.core.*;
+import javafx.collections.ObservableList;
 
 class ServerSolution implements IAccountServer {
 
@@ -123,5 +124,12 @@ class ServerSolution implements IAccountServer {
 			}
 		}
 		return -1;
+	}
+	
+	public class ObservableAccountList extends Observable {
+		List<AAccount> observedList;
+		public ObservableAccountList(List<AAccount> list){
+			observedList = list;
+		}
 	}
 }
