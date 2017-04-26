@@ -30,9 +30,7 @@ class MainFrame extends JFrame {
 
 		//** initialize myServer
 		AccountServerFactory factory = AccountServerFactory.getInstance();
-		myServer = factory.getAccountServer();
-		AccountObserver accountObserver = new AccountObserver(myServer.getAllAccounts());
-		
+		myServer = factory.getAccountServer();		
 
 		props = new Properties();
 

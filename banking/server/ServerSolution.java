@@ -25,7 +25,7 @@ class ServerSolution extends Observable implements IAccountServer  {
 				for (int i=0; i < size; i++) {
 					AAccount acc = (AAccount) in.readObject();
 					accountList.add(acc);
-				}
+				}				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,6 +38,11 @@ class ServerSolution extends Observable implements IAccountServer  {
 				}
 			}
 		}
+		
+		AccountObserver accountObserver = new AccountObserver(accountList);
+		this.addObserver(accountObserver);
+		
+		
 	}
 	public void newAccount(String type, String name, float balance) {
 		AAccount acc;
