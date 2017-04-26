@@ -39,6 +39,7 @@ class ServerSolution extends Observable implements IAccountServer  {
 			}
 		}
 		
+		//SER316 TASK 3 ADDOBSERVER
 		AccountObserver accountObserver = new AccountObserver(accountList);
 		this.addObserver(accountObserver);
 		
